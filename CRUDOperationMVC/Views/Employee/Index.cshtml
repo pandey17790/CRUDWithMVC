@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CRUDOperationMVC.Models.Employee>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<h2>Employee</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" border="1">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Designation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th>Actions</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmpCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salary)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { empCode = item.EmpCode }) |
+                @Html.ActionLink("View", "EmpDetail", new { empCode = item.EmpCode }) |
+                @Html.ActionLink("Delete", "DeleteEmployee", new { empCode = item.EmpCode }, new { onClick = "return confirm('Are you sure want to delete?');"})
+            </td>
+        </tr>
+    }
+
+</table>
